@@ -1,0 +1,17 @@
+---
+- name: Ejecuta Jenkins OpenShift CICD
+  hosts: localhost
+
+  tasks:
+    - name: echo ejecución API
+      debug: msg="Iniciando ejecución API-Jenkins-OpenShift-CI\CD"
+    - name: Llamada a API
+      uri:
+        url: "https://jenkins-cicdpoc.apps.cloud.igalvan.com/job/cicdpoc/job/cicdpoc-tasks-pipeline/buildWithParameters?token=97531&SOURCE_REPOSITORY_URL=https://github.com/Buggy77/testapp_cicd.git&ENABLE_QUAY=false&NOTIFY_EMAIL_FROM=manuel.gutierrez@scempresarial.com.mx&NOTIFY_EMAIL_REPLYTO=manuel.gutierrez@scempresarial.com.mx&STAGE_PROJECT=stage&DEV_PROJECT=dev&SOURCE_REPOSITORY_REF=master&NOTIFY_EMAIL_LIST=manuel.gutierrez@scempresarial.com.mx,mario.espejel@scempresarial.com.mx"
+        method: GET
+        user: "dv-admin"
+        password: "a86945fa128da756b6094e4e3427bcb8"
+        force_basic_auth: yes
+        status_code: 200
+        validate_certs: no
+        body_format: json
